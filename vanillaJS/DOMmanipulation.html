@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM Manipulation</title>
+</head>
+<body>
+    <form id="newTodo">
+        <input type="text" name="input" id="input">
+        <button id="new">Add</button>
+    </form>
+    <ul id="todos">
+
+    </ul>
+</body>
+</html>
+<script>
+    
+    document.addEventListener('submit', e => {
+
+        if (e.target.matches('#newTodo')) {
+
+            e.preventDefault();
+
+            let input = document.getElementById('input');
+            let newTodo = input.value;
+            if (newTodo === '') {
+                return;
+            }
+            
+            let todos = document.getElementById('todos');
+            let todo = document.createElement('li');
+            todo.textContent = newTodo;
+            todos.appendChild(todo);
+
+            // clear input
+            input.value = '';
+            input.focus();
+        }
+
+    }, false);
+
+</script>
